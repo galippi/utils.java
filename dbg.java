@@ -49,4 +49,12 @@ public class dbg {
             System.out.print(Sprintf.sprintf(fmt, arguments));
         }
     }
+    public static boolean get(int dbg_level)
+    {
+      return (dbg_level <= level);
+    }
+    public static int get()
+    {
+      return level;
+    }
 }
