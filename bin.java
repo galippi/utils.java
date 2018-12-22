@@ -34,11 +34,20 @@ public class bin {
   }
   static public int getInt16(byte[] data, int offset)
   {
-    return ( getInt(data[offset + 0]) +
-            (( (int)data[offset + 1]) * 256));
+    int val = ( getInt(data[offset + 0]) +
+             ( getInt(data[offset + 1]) * 256));
+    if (val > 32767)
+    {
+      val = 65536 - val;
+    }
+    return val;
   }
   static public void setInt16(byte[] buf, int offset, int data)
   {
+    if (data > 32767)
+      data = 32676;
+    else if (data < -32768)
+      data = -32768;
     buf[offset + 0] = (byte)(data & 0xFF);
     buf[offset + 1] = (byte)((data / 256) & 0xFF);
   }
