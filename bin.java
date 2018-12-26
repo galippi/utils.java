@@ -28,9 +28,9 @@ public class bin {
   static public void setInt32(byte[] buf, int offset, int data)
   {
     buf[offset + 0] = (byte)(data & 0xFF);
-    buf[offset + 1] = (byte)((data / 256) & 0xFF);
-    buf[offset + 2] = (byte)((data / 65536) & 0xFF);
-    buf[offset + 3] = (byte)((data / 16777216) & 0xFF);
+    buf[offset + 1] = (byte)((data >> 8) & 0xFF);
+    buf[offset + 2] = (byte)((data >>16) & 0xFF);
+    buf[offset + 3] = (byte)((data >>24) & 0xFF);
   }
   static public int getInt16(byte[] data, int offset)
   {
@@ -45,11 +45,11 @@ public class bin {
   static public void setInt16(byte[] buf, int offset, int data)
   {
     if (data > 32767)
-      data = 32676;
+      data = 32767;
     else if (data < -32768)
       data = -32768;
     buf[offset + 0] = (byte)(data & 0xFF);
-    buf[offset + 1] = (byte)((data / 256) & 0xFF);
+    buf[offset + 1] = (byte)((data >> 8) & 0xFF);
   }
   static public int getUint16(byte[] data, int offset)
   {
@@ -58,7 +58,11 @@ public class bin {
   }
   static public void setUint16(byte[] buf, int offset, int data)
   {
+    if (data < 0)
+      data = 0;
+    else if (data > 65535)
+      data = 65535;
     buf[offset + 0] = (byte)(data & 0xFF);
-    buf[offset + 1] = (byte)((data / 256) & 0xFF);
+    buf[offset + 1] = (byte)((data >> 8) & 0xFF);
   }
 }
