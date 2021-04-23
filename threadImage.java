@@ -7,6 +7,7 @@ package utils;
  */
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -32,7 +33,7 @@ public class threadImage
         System.out.println("DrawingLoop - Runnable - run");
         try
         {
-          Thread.sleep(2000);
+          //Thread.sleep(2000);
           int ctr = 0;
           while(!stop)
           {
@@ -51,6 +52,7 @@ public class threadImage
         }
       }
   }
+
   protected void Drawing()
   { /* drawing function */
     java.awt.Graphics2D g = img.createGraphics();
@@ -60,19 +62,17 @@ public class threadImage
     g.drawString("threadImage.drawString", 40, 40);
     g.dispose();
   }
-  boolean isCancelled()
+
+  public boolean isCancelled()
   {
-    if (cancel)
-    {
-      cancel = false;
-      return true;
-    }
-    return false;
+    return cancel;
   }
+
   public boolean isReady()
   {
     return ((imgReady != null) && ready);
   }
+
   public void Cancel()
   {
     cancel = true;
@@ -113,6 +113,17 @@ public class threadImage
   {
     imgReady = newImg;
   }
+
+  public void setImgTmp(BufferedImage img)
+  {
+    BufferedImage tmpImg = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+    java.awt.Graphics2D g2d = tmpImg.createGraphics();
+    g2d.drawImage(img, 0, 0, null);
+    g2d.dispose();
+    imgReady = tmpImg;
+    parent.repaint();
+  }
+
   public void setType(int type)
   {
     imageType = type;
