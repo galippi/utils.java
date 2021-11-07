@@ -38,7 +38,7 @@ public class bin {
               ( getInt(data[offset + 1]) * 256));
     if (val > 32767)
     {
-      val = 65536 - val;
+      val = val - 65536;
     }
     return val;
   }
