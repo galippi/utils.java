@@ -28,11 +28,20 @@ public class dbg {
         level = level_new;
         dprintf(level, "Info: dbg.set(%d)!\n", level);
     }
+
+    static void printlnLocal(int dbg_level, String str)
+    {
+        if (dbg_level <= 1)
+            System.err.println(str);
+        else
+            System.out.println(str);
+    }
+
     public static void println(int dbg_level, String line)
     {
         if (dbg_level <= level)
         {
-            System.out.println(line);
+            printlnLocal(dbg_level, line);
         }
     }
     public static String d_format(String fmt, Object ... arguments)
@@ -42,11 +51,19 @@ public class dbg {
       return Sprintf.sprintf(fmt, arguments);
     }
 
+    static void print(int dbg_level, String str)
+    {
+        if (dbg_level <= 1)
+            System.err.print(str);
+        else
+            System.out.print(str);
+    }
+
     public static void dprintf(int dbg_level, String fmt, Object ... arguments)
     {
         if (dbg_level <= level)
         {
-            System.out.print(Sprintf.sprintf(fmt, arguments));
+            print(dbg_level, Sprintf.sprintf(fmt, arguments));
         }
     }
     public static int get()
