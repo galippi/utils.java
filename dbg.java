@@ -5,7 +5,7 @@
 
 package lippiWare.utils;
 
-import utils.Sprintf;
+import lippiWare.utils.Sprintf;
 
 public class dbg {
     static int level;
