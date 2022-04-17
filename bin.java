@@ -62,6 +62,7 @@ public class bin {
         final int lineLength = 16;
         char[] line = new char[lineLength*3 + 1 + lineLength];
         int linePos = pos % lineLength;
+        //int linePos = 0;
         while (size > 0)
         {
             java.util.Arrays.fill(line, ' ');
@@ -90,5 +91,25 @@ public class bin {
             return (char)('0' + i);
         else
             return (char)('A' - 10 + i);
+    }
+    public static String toString(byte[] data) {
+        return toString(data, 0, data.length);
+    }
+    public static String toString(byte[] data, int length) {
+        return toString(data, 0, length);
+    }
+    public static String toString(byte[] data, int pos, int length) {
+        String result = "";
+        while (length > 0)
+        {
+            int val = ((int)data[pos]) & 0xFF;
+            result = result + byte2HexDigit(((int)(val >> 4)) & 0x0F) + 
+                              byte2HexDigit(((int)(val     )) & 0x0F);
+            pos++;
+            length--;
+            if (length > 0)
+                result = result + " ";
+        }
+        return result;
     }
 }
