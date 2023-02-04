@@ -57,12 +57,25 @@ public class bin {
     buf[offset + 1] = (byte)((data / 256) & 0xFF);
   }
 
+  public static String byte2HexString(byte[] objectData, int pos, int size) {
+      char[] line = new char[size*3];
+      for (int i = pos, idx = 0; (size != 0); i++)
+      {
+          int val = (int)objectData[i] & 0xFF;
+          line[idx++] = byte2HexDigit(((int)(val >> 4)) & 0x0F);
+          line[idx++] = byte2HexDigit(((int)(val     )) & 0x0F);
+          line[idx++] = ' ';
+          size--;
+      }
+      String result = new String(line);
+      return result;
+  }
+
     public static String byte2String(byte[] objectData, int pos, int size) {
         String result = "";
         final int lineLength = 16;
         char[] line = new char[lineLength*3 + 1 + lineLength];
         int linePos = pos % lineLength;
-        //int linePos = 0;
         while (size > 0)
         {
             java.util.Arrays.fill(line, ' ');
@@ -92,6 +105,7 @@ public class bin {
         else
             return (char)('A' - 10 + i);
     }
+
     public static String toString(byte[] data) {
         return toString(data, 0, data.length);
     }
