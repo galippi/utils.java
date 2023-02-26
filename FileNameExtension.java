@@ -19,4 +19,27 @@ public class FileNameExtension {
         dbg.dprintf(9, "FileNameExtension.set(%s, %s)=%s!\n", baseFileName, fileNameExtension, newFileName);
         return newFileName;
     }
+
+    static public String get(String filename)
+    {
+        int idx0 = filename.lastIndexOf('/');
+        int idx1 = filename.lastIndexOf('\\');
+        if (idx0 >= 0)
+        {
+            if (idx1 > idx0)
+                idx0 = idx1;
+        }else if (idx1 >= 0)
+        {
+            idx0 = idx1;
+        }
+        if (idx0 >= 0)
+            filename = filename.substring(idx0 + 1);
+        idx0 = filename.lastIndexOf('.');
+        if (idx0 >= 0)
+        {
+            filename = filename.substring(idx0 + 1);
+            return filename;
+        }
+        return "";
+    }
 }
