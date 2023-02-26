@@ -27,7 +27,7 @@
  * It's downloaded from https://github.com/dwango/quercus/blob/c5f6fb5a5b373375dd4d71bd08a7f7c99b78bfca/src/main/java/com/caucho/util/Sprintf.java
  */
 
-package utils;
+package lippiWare.utils;
 
 import java.lang.StringBuffer;
 

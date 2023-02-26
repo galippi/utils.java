@@ -1,4 +1,4 @@
-package utils;
+package lippiWare.utils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +11,7 @@ package utils;
  * @author Gabor Liptak
  */
 //import java.io.*;
-import utils.Sprintf;
+import lippiWare.utils.Sprintf;
 
 public class dbg {
     static int level;

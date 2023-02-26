@@ -1,4 +1,4 @@
-package utils;
+package lippiWare.utils;
 
 public class StopWatch {
     long t0;
