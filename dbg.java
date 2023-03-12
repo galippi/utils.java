@@ -11,7 +11,6 @@ package lippiWare.utils;
  * @author Gabor Liptak
  */
 //import java.io.*;
-import lippiWare.utils.Sprintf;
 
 public class dbg {
     static int level;

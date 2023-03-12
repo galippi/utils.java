@@ -347,7 +347,7 @@ public class Sprintf {
 
   private static void missing(int arg)
   {
-    throw new IllegalArgumentException(L.l("missing sprintf argument {0}",arg));
+    throw new IllegalArgumentException(L10N.l("missing sprintf argument {0}",arg));
   }
 
   public static void formatDouble(StringBuffer cb, double value,
@@ -729,8 +729,8 @@ public class Sprintf {
         return dValue;
     }
     else {
-      throw new IllegalArgumentException(L.l("can't convert {0} to double.",
-                                             value.getClass().getName()));
+      throw new IllegalArgumentException(L10N.l("can't convert {0} to double.",
+                                                value.getClass().getName()));
     }
   }
 
@@ -790,14 +790,14 @@ public class Sprintf {
       }
 
       if (i < length)
-        throw new IllegalArgumentException(L.l("can't convert '{0}' to long.", string));
+        throw new IllegalArgumentException(L10N.l("can't convert '{0}' to long.", string));
 
       return sign * intValue;
 
     }
     else {
-      throw new IllegalArgumentException(L.l("can't convert {0} to long.",
-                                             value.getClass().getName()));
+      throw new IllegalArgumentException(L10N.l("can't convert {0} to long.",
+                                                value.getClass().getName()));
     }
   }
 
