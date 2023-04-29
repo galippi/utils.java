@@ -15,6 +15,7 @@ public class TextFileReader {
         String line;
         while ((line = fin.readLine()) != null) {
             lineNum++;
+            line = line.trim();
             if (line.isEmpty() || line.startsWith("//"))
                 continue;
             return line;
