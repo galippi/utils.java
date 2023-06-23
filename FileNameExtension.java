@@ -42,4 +42,9 @@ public class FileNameExtension {
         }
         return "";
     }
+
+    public static boolean check(String baseFileName, String fileNameExtension) {
+        String ext = get(baseFileName);
+        return fileNameExtension.equalsIgnoreCase(ext);
+    }
 }
