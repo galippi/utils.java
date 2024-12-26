@@ -37,10 +37,12 @@ public class dbg {
 
     public static void set(int level_new)
     {
-        level = level_new;
-        levelMasked = level & levelMask;
-        moduleMasked = level & moduleMask;
-        dprintf(level, "Info: dbg.set(%d)!\n", level);
+        if (level != level_new) {
+            level = level_new;
+            levelMasked = level & levelMask;
+            moduleMasked = level & moduleMask;
+            dprintf(level, "Info: dbg.set(%d)!\n", level);
+        }
     }
 
     static void printlnLocal(int dbg_level, String str)
