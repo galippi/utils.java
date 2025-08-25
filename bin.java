@@ -94,11 +94,11 @@ public class bin {
   }
 
   public static int bitfieldSet(int src, int pos, int length, int data) {
-      return (int)((src & (((1 << length) - 1) << pos)) | (data << pos)); 
+      return (int)((src & (~(((1 << length) - 1) << pos))) | (data << pos)); 
   }
 
   public static byte bitfieldSet(byte src, int pos, int length, byte data) {
-      return (byte)((src & (((1 << length) - 1) << pos)) | (data << pos)); 
+      return (byte)((src & (~(((1 << length) - 1) << pos))) | (data << pos)); 
   }
 
   public static String byte2HexString(byte[] objectData, int pos, int size) {
