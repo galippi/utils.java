@@ -88,6 +88,17 @@ class BinTest {
         assertTrue(bin.bitfieldSet(0, 24, 8, 0x6A) == 0x6A000000);
     }
 
+    @Test
+    void test_bitfieldSetByte() {
+        testReport("test_bitfieldSetByte");
+
+        assertEquals(bin.bitfieldSet((byte)0,  0, 8, (byte)0x6A), 0x6A);
+        assertEquals(bin.bitfieldSet((byte)0,  1, 3, (byte)0x01), 0x02);
+        assertEquals(bin.bitfieldSet((byte)0,  5, 3, (byte)0x01), 0x20);
+        assertEquals(bin.bitfieldSet((byte)0xFE,  5, 3, (byte)0x01), 0x3E);
+        assertEquals(bin.bitfieldSet((byte)0xFE,  3, 2, (byte)0x01), (byte)0xEE);
+    }
+
     static void testReport(String func) {
         System.out.println("Test case " + func);
     }
