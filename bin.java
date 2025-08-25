@@ -66,6 +66,25 @@ public class bin {
     buf[offset + 1] = (byte)((data >> 8) & 0xFF);
   }
 
+  public static byte[] memset(byte[] array, byte val, int offset, int length) {
+      for (int i = 0; i < length; i++) {
+          array[offset + i] = val;
+      }
+      return array;
+  }
+
+  public static byte[] memset(byte[] array, int val, int offset, int length) {
+      return memset(array, (byte)(val & 0xFF), offset, length);
+  }
+
+  public static byte[] memset(byte[] array, byte val) {
+      return memset(array, val, 0, array.length);
+  }
+
+  public static byte[] memset(byte[] array, int val) {
+      return memset(array, (byte)(val & 0xFF), 0, array.length);
+  }
+
   public static String byte2HexString(byte[] objectData, int pos, int size) {
       char[] line = new char[size*3];
       for (int i = pos, idx = 0; (size != 0); i++)
