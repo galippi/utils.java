@@ -85,6 +85,22 @@ public class bin {
       return memset(array, (byte)(val & 0xFF), 0, array.length);
   }
 
+  public static byte bitfieldGet(byte src, int pos, int length) {
+      return (byte)((src >> pos) & ((1 << length) - 1)); 
+  }
+
+  public static int bitfieldGet(int src, int pos, int length) {
+      return (int)((src >> pos) & ((1 << length) - 1)); 
+  }
+
+  public static int bitfieldSet(int src, int pos, int length, int data) {
+      return (int)((src & (((1 << length) - 1) << pos)) | (data << pos)); 
+  }
+
+  public static byte bitfieldSet(byte src, int pos, int length, byte data) {
+      return (byte)((src & (((1 << length) - 1) << pos)) | (data << pos)); 
+  }
+
   public static String byte2HexString(byte[] objectData, int pos, int size) {
       char[] line = new char[size*3];
       for (int i = pos, idx = 0; (size != 0); i++)
